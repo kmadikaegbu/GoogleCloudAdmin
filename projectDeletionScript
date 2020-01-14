@@ -1,0 +1,14 @@
+# Gcloud projects list and dump into file
+gcloud projects list | awk '{print $1}' >> projects-list.txt
+
+echo "Starting deletion"
+
+while read project; do
+  if [ "${project}" != "PROJECT_ID" ]; then
+    echo "Deleting project: ${project}"
+    gcloud projects delete "${project}" 
+    #--quiet
+  fi
+done <projects-list.txt
+
+echo "Done!!"
