@@ -82,5 +82,12 @@ rows = cursor.fetchall()
 
 for row in rows:
     print(row)
+# Convert the data to JSON format
+json_data = json.dumps([row for row in cursor.fetchall()], indent=4)
 
+# Print the JSON data
+print(json_data)
+
+# Close the connection
+conn.close()
 print("Database and table created successfully!")
