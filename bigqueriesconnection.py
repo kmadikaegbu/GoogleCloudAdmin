@@ -24,3 +24,10 @@ results = client.query(query)
 # Print the results
 for row in results:
     print(row)
+
+# Convert the data to JSON format
+json_data = json.dumps([row for row in cursor.fetchall()], indent=4)
+
+# Print the JSON data
+print(json_data)
+
